@@ -1,0 +1,71 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Sliders.IndexModel
+@{
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست اسلاید ها</h4>
+                                            <hr />
+                                            <a class="btn btn-success" asp-page="AddSlide">اضافه کردن اسلاید</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>شناسه</th>
+                                                            <th>تصویر</th>
+                                                            <th>عنوان اسلاید</th>
+                                                            <th>دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.Slide)
+                                                        {
+                                                            <tr>
+                                                                <td>@item.SliderId</td>
+                                                                <td>
+                                                                    <img src="/Admin/Slider/@item.SliderImage"  style="max-width:100px;max-height:180px"/>
+                                                                    
+                                                                </td>
+                                                                <td>@item.Title</td>
+                                                                <td>
+                                                                    <a class="btn btn-success btn-sm" asp-page="EditSlider" asp-route-id="@item.SliderId">ویرایش</a>
+                                                                    <a class="btn btn-warning btn-sm" asp-page="RemoveSlider" asp-route-id="@item.SliderId">حذف</a>
+
+                                                                </td>
+                                                            </tr>
+
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+
+</div>

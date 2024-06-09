@@ -1,0 +1,37 @@
+﻿@page "{id}"
+@model PalanganStore_Web.Pages.Admin.Comments.ReadCommentModel
+@{
+
+}
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="alert alert-danger">
+                                        <p>
+                                            <h3>
+                                                نظر خوانده شد؟
+                                            </h3>
+                                            <form method="post">
+                                                <input type="hidden" asp-for="comment.CommentId" />
+                                                <input type="submit" class="btn btn-info" value="تایید" />
+                                            </form>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

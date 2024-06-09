@@ -1,0 +1,170 @@
+﻿@model IEnumerable<Palangan.Core.Dtos.Product.ShowProductForSiteViewModel>
+@{
+    ViewData["Title"] = "آرشیو";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آرشیو محصولات</title>
+    <!-- font---------------------------------------->
+    <link rel="stylesheet" href="/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/materialdesignicons.css">
+    <!-- plugin-------------------------------------->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/noUISlider.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/nice-select.css">
+    <!-- main-style---------------------------------->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+
+<body>
+    <!-- header-------------------------------->
+   
+    <!-- header-------------------------------->
+    <!-- arshive-product----------------------->
+    <div class="container-main">
+        <div class="d-block">
+            
+            <div class="page-content page-row">
+                <div class="main-row">
+                    <div id="breadcrumb">
+                        <i class="mdi mdi-home"></i>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">آرشیو محصولات</li>
+                                   
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <!-- start sidebar--------------------->
+                    <div class="col-lg-3 col-md-3 col-xs-12 pr sticky-sidebar">
+                        <div class="shop-archive-sidebar">
+                            <div class="sidebar-archive mb-3">
+                                
+                              
+                               
+                            </div>
+                        </div>
+                    </div>
+                         <div class="col-lg-12 col-md-9 col-xs-12 pl">                       
+                            <div class="shop-archive-content mt-3 d-block">
+                                <div class="archive-header">
+                                    <h2 class="archive-header-title">آرشیو محصولات</h2>
+                                @*
+                                    <div class="sort-tabs mt-0 d-inline-block pr">
+                                        <h4>مرتب‌سازی بر اساس :</h4>
+                                    </div>
+                                    <form action="/home/arshive" method="get">
+                                    <div class="nav-sort-tabs-res">
+                                        <ul class="nav sort-tabs-options" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" name="getType" id="Most-visited-tab" data-toggle="tab"
+                                                   href="#Most-visited" role="tab" aria-controls="Most-visited"
+                                                   aria-selected="true">همه</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link active" name="getType" id="Most-visited-tab" data-toggle="tab"
+                                                   href="#Most-visited" role="tab" aria-controls="Most-visited"
+                                                   aria-selected="true">پربازدیدترین</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" name="getType" id="newest-tab" data-toggle="tab" href="#newest"
+                                                   role="tab" aria-controls="newest" aria-selected="false">جدیدترین</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="cheapest-tab" data-toggle="tab" href="#cheapest"
+                                                   role="tab" name="getType" aria-controls="cheapest" aria-selected="false">ارزان‌ترین</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" name="getType" value="expensive" id="most-expensive-tab" data-toggle="tab"
+                                                   href="#most-expensive" role="tab" aria-controls="most-expensive"
+                                                   aria-selected="false">گران‌ترین</a>
+                                            </li>
+                                            <li>
+                                                <input type="submit" class="btn btn-success" value="اعمال" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    </form>*@
+                                </div>
+                                
+
+
+                                <div class="tab-pane fade show active" id="Most-visited" role="tabpanel" aria-labelledby="Most-visited-tab">
+                                    <div class="row">
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="col-lg-3 col-md-3 col-xs-12 order-1 d-block mb-3">
+                                                <section class="product-box product product-type-simple">
+                                                    <div class="thumb">
+                                                        <a href="" class="d-block">
+                                                        <img href="/Product/ShowProduct/@item.ProductId" style="max-width:360px;max-height:260px;" src="/Admin/ProductImage/@item.ProductImage">
+                                                        </a>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="title">
+                                                    <a href="/Product/ShowProduct/@item.ProductId" class="alert alert-info">@item.Title</a>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="price">
+                                                        <span class="amount">
+                                                            @item.Price
+                                                            <span>تومان</span>
+                                                        </span>
+                                                    </div>
+                                                </section>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                           
+
+                   
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- arshive-product----------------------->
+  
+   
+
+</body>
+<!-- file js---------------------------------------------------->
+
+
+</html>
+@section scripts
+{
+    <script src="/assets/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.js"></script>
+    <!-- plugin----------------------------------------------------->
+    <script src="/assets/js/vendor/owl.carousel.min.js"></script>
+    <script src="/assets/js/vendor/jquery.countdown.js"></script>
+    <script src="/assets/js/vendor/ResizeSensor.min.js"></script>
+    <script src="/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+    <script src="/assets/js/vendor/wNumb.js"></script>
+    <script src="/assets/js/vendor/nouislider.min.js"></script>
+    <script src="/assets/js/vendor/jquery.nice-select.min.js"></script>
+    <!-- main js---------------------------------------------------->
+    <script src="/assets/js/main.js"></script>
+}

@@ -1,0 +1,364 @@
+﻿@model Palangan.DataLayer.Entities.Products.Product
+@{
+    ViewData["Title"] = "ShowProduct";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+<div class="main-row">
+    <div id="breadcrumb">
+        <i class="mdi mdi-home"></i>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                <li class="breadcrumb-item"><a href="#">کالای دیجیتال</a></li>
+                <li class="breadcrumb-item"><a href="#">موبایل</a></li>
+                <li class="breadcrumb-item active open" aria-current="page">
+                    @Model.Title
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-lg">
+        <div class="product type-product">
+            <div class="col-lg-5 col-xs-12 pr d-block" style="padding: 0;">
+                <section class="product-gallery">
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <div>
+                                <ul class="gallery-actions">
+                                    <li>
+                                        <a href="#" class="btn-option add-product-wishes">
+                                            <i class="mdi mdi-heart-outline"></i>
+                                            <span>محبوب</span>
+                                        </a>
+                                    </li>
+                                    <li class="option-social">
+                                        <a href="#" class="btn-option btn-option-social" data-toggle="modal" data-target="#option-social">
+                                            <i class="mdi mdi-share"></i>
+                                            <span>اشتراک</span>
+                                        </a>
+                                        <!-- Modal-option-social -->
+                                        <div class="modal fade" id="option-social" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            اشتراک گذاری
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="title">
+                                                            با استفاده از روش‌های زیر
+                                                            می‌توانید این صفحه را با دوستان خود به
+                                                            اشتراک بگذارید.
+                                                        </div>
+                                                        <form action="#" class="email-sharing">
+                                                            <h5 class="share-title">
+                                                                ارسال از طریق ایمیل
+                                                            </h5>
+                                                            <div class="input-group-sharing">
+                                                                <input type="email" class="share-email-address form-control" id="share-email">
+                                                                <button class="btn-send-email btn btn-primary" type="submit">ارسال ایمیل</button>
+                                                            </div>
+                                                        </form>
+                                                        <div class="share-options">
+                                                            <div class="share-social-buttons text-center">
+                                                                <a href="#" class="share-social share-social-twitter">
+                                                                    <i class="mdi mdi-twitter"></i>
+                                                                </a>
+                                                                <a href="#" class="share-social share-social-facebook">
+                                                                    <i class="mdi mdi-facebook"></i>
+                                                                </a>
+                                                                <a href="#" class="share-social share-social-whatsapp">
+                                                                    <i class="mdi mdi-whatsapp"></i>
+                                                                </a>
+                                                                <a href="#" class="share-social share-social-email-outline">
+                                                                    <i class="mdi mdi-email-outline"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-share-col">
+                                                            <input class="ui-url-field" type="url" value="https://www.digikala.com/product/dkp-1672478" readonly="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="option-alarm">
+                                        <a href="#" class="btn-option btn-option-alarm" data-toggle="modal" data-target="#btn-option-alarm">
+                                            <i class="mdi mdi-bell-outline"></i>
+                                            <span>اطلاع‌رسانی</span>
+                                        </a>
+                                        <!-- Modal-option-alarm -->
+                                        <div class="modal fade" id="btn-option-alarm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            به من اطلاع بده
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-notification-title">
+                                                            از طریق:
+                                                        </div>
+                                                        <div class="form-auth-row">
+                                                            <label for="#" class="ui-checkbox mt-1">
+                                                                <input type="checkbox" value="1" name="login" id="remember">
+                                                                <span class="ui-checkbox-check"></span>
+                                                            </label>
+                                                            <label for="remember" class="remember-me mr-0">
+                                                                ایمیل به
+                                                                info@digismart.com
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-auth-row">
+                                                            <label for="#" class="ui-checkbox mt-1">
+                                                                <input type="checkbox" value="1" name="login" id="remember">
+                                                                <span class="ui-checkbox-check"></span>
+                                                            </label>
+                                                            <label for="remember" class="remember-me mr-0">
+                                                                پیامک به
+                                                                *******0991
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-auth-row">
+                                                            <label for="#" class="ui-checkbox mt-1">
+                                                                <input type="checkbox" value="1" name="login" id="remember">
+                                                                <span class="ui-checkbox-check"></span>
+                                                            </label>
+                                                            <label for="remember" class="remember-me mr-0">
+                                                                سیستم پیام شخصی
+                                                                دیجی اسمارت
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary ml-2">ثبت</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بازگشت</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="Three-dimensional">
+                                        <a href="#" class="btn-option btn-Three-dimensional" data-toggle="modal" data-target="#more-product">
+                                            <i class="mdi mdi-more"></i>
+                                            <span>نمایش بیشتر</span>
+                                        </a>
+                                        <div class="modal fade" id="more-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered more-product" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div id="custom-events">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="Three-dimensional">
+                                        <a href="product-comparison.html" class="btn-option btn-compare">
+                                            <i class="mdi mdi-compare"></i>
+                                            <span>مقایسه</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-img">
+                                <a href="#">
+                                    <div class="zoomWrapper" style="height: 411px; width: 411px;">
+                                        <img class="zoom-img" id="img-product-zoom" src="/Admin/ProductImage/@Model.ProductImage" data-zoom-image="assets/images/page-single-product/product-img/product-img-note10.jpg" width="411" style="position: absolute;">
+                                    </div>
+                                </a>
+                                <div id="gallery_01f" style="width:420px;float:right;">
+                                    <a href="#">
+                                    </a>
+                                    <ul class="gallery-items owl-carousel owl-theme owl-rtl owl-loaded owl-drag" id="gallery-slider">
+
+                                        <div class="owl-stage-outer">
+                                            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 767px;">
+                                                <div class="owl-item active" style="width: 143.291px; margin-left: 10px;">
+                                                </div>
+                                            </div>
+                                            <div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-right"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-left"></i></button></div><div class="owl-dots disabled"></div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-7 col-xs-12 pl mt-5 d-block">
+                <section class="product-info">
+                    <div class="product-headline">
+                        <h1 class="product-title">
+                            @Model.Title
+                        </h1>
+                    </div>
+                    <div class="product-attributes">
+                        <div class="product-config">
+                        </div>
+                    </div>
+                    <div class="product-config-wrapper">
+                        <div class="product-directory">
+                            <ul>
+                            </ul>
+                        </div>
+                        <div class="col=lg-6 col-md-6 col-xs-12 pr">
+
+                            <div class="product-params pt-3">
+                                @Html.Raw(Model.Description)
+                            </div>
+
+                        </div>
+                        <div class="col=lg-6 col-md-6 col-xs-12 pr">
+                            <div class="product-seller-info">
+                                <div class="seller-info-changable">
+                                    <div class="product-seller-row vendor">
+                                        <span class="title"> فروشنده:</span>
+                                        <a href="#" class="product-name">پالنگان استور</a>
+                                    </div>
+
+                                    <div class="product-seller-row price">
+                                        <span class="title"> قیمت:</span>
+                                        <a href="#" class="product-name">
+                                            <span class="amount">
+                                                @Model.Price
+                                                <span>تومان</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    @*<div class="product-seller-row guarantee">
+                                    <span class="title mt-3"> تعداد:</span>
+                                    <div class="quantity pl">
+                                    <input type="number" min="1" max="100" step="1" value="1"><div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>
+                                    <div class="quantity-nav">
+                                    <div class="quantity-button quantity-up">+</div>
+                                    <div class="quantity-button quantity-down">-</div>
+                                    </div>
+                                    </div>
+                                    </div>*@
+                                    <div class="product-seller-row add-to-cart">
+                                        <a asp-controller="Order" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn-add-to-cart btn btn-primary">
+                                            <span class="btn-add-to-cart-txt">افزودن به سبد خرید</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="product-usp">
+            </div>
+
+
+
+            <div class="comments-add-row d-inline-block">
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-right">
+                    <form asp-controller="Product" asp-action="AddComment" method="post">
+                        <div class="comments-add-col-form">
+                            <div class="form-comment">
+
+                                <header><h3> نظرات کاربران </h3></header>
+
+                                <div>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <form asp-controller="Course" asp-action="CreateComment"
+                                              data-ajax="true"
+                                              data-ajax-method="post"
+                                              data-ajax-mode="replace"
+                                              data-ajax-update="#listComment"
+                                              data-ajax-success="Success">
+                                            <input type="hidden" name="comment.ProductId" value="@Model.ProductId" />
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" id="comment_Comment" name="comment.Comment" placeholder="متن نظر"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <button type="submit" class="btn btn-success"> ثبت نظر </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-danger">
+                                            جهت درج نظر باید وارد سایت شوید
+                                        </div>
+                                    }
+
+                                    <div class="comment-list" id="listComment">
+                                    </div>
+                                </div>
+                                </section>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-left">
+                    <div class="comments-add-col-content">
+                        <h1>تگ ها</h1>
+                        <ul class="categories">
+                            @if (Model.Tags!=null)
+                            {
+                                foreach (var item in Model.Tags.Split(",", StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <li>
+                                        <h4>
+                                            <a class="text text-warning">@item</a>
+                                        </h4>
+                                    </li>
+                                }
+                            }
+
+                        </ul>
+                        <div class="clearfix"></div>
+                        <div>
+
+                            <p>
+                                به کاربران و سایر اشخاص احترام بگذارید. پیام‌هایی که شامل محتوای
+                                توهین‌آمیز و
+                                کلمات نامناسب باشند، حذف می‌شوند.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script src="/assets/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function Success() {
+            $("#comment_Comment").val("");
+        }
+
+        $(function () {
+            $("#listComment").load("/Product/ShowComment/" + @Model.ProductId);
+        });
+
+                //function pageComment(pageid) {
+                //    $("#listComment").load("/Course/ShowComment/" + Model.CourseId+"?pageId="+pageid);
+                //}
+    </script>
+}

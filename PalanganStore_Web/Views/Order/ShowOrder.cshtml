@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Palangan.Core.Dtos.Order.ShowOrderDetailViewModel>
+@{
+    ViewData["Title"] = "سبد خرید";
+
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<div class="main-row">
+    <div id="breadcrumb">
+        <i class="mdi mdi-home"></i>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                <li class="breadcrumb-item active open" aria-current="page">سبد خرید</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="cart-home">
+        <div class="post-item-cart d-block order-2">
+            <div class="content-page">
+                <div class="cart-form">
+                    <form action="#" class="c-form">
+                        <table class="table-cart cart table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="product-cart-name">نام محصول</th>
+                                    <th scope="col" class="product-cart-price">قیمت</th>
+                                    <th scope="col" class="product-cart-quantity">تعداد مورد نیاز</th>
+                                    <th scope="col" class="product-cart-Total">مجموع</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row" class="product-cart-name">
+                                            <div class="product-thumbnail-img">
+                                                <a href="#">
+                                                    <img src="/Admin/ProductImage/@item.ImageName">
+                                                </a>
+                                                <div class="product-remove">
+                                                    <a asp-action="DeleteOrder" asp-controller="Order" asp-route-id="@item.OrderDetailId" class="remove">
+                                                        <i class="mdi mdi-close"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-title">
+                                                <a href="#">
+                                                    @item.Title
+                                                </a>
+
+                                            </div>
+                                        </th>
+                                        <td class="product-cart-price">
+                                            <span class="amount">
+                                                @item.Price.ToString("#,0")
+                                                <span>تومان</span>
+                                            </span>
+                                        </td>
+                                        <td class="product-cart-quantity">
+                                            <div class="required-number before">
+                                                <div class="quantity">
+                                                    <input type="number" min="1" max="100" step="1" value="@item.Count">
+                                                    <div class="quantity-nav">
+                                                        <div class="quantity-button quantity-up">
+                                                            <a asp-action="AddCount" asp-controller="Order" asp-route-id="@item.OrderDetailId">
+                                                                +
+                                                            </a>
+                                                            
+                                                            </div>
+                                                        <div class="quantity-button quantity-down">
+                                                            <a asp-action="RemoveCount" asp-controller="Order" asp-route-id="@item.OrderDetailId">
+                                                                -
+                                                            </a>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product-cart-Total">
+                                            <span class="amount">
+                                                @((item.Price*@item.Count).ToString("#,0"))
+                                                <span>تومان</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </form>
+                    <div class="cart-collaterals">
+                        <div class="totals d-block">
+                            <h3 class="Total-cart-total">مجموع کل سبد خرید</h3>
+                            <div class="checkout-summary">
+                                <ul class="checkout-summary-summary">
+                                    <li class="cart-subtotal">
+                                        <span class="amount">قیمت کل</span>
+                                        <span> @Model.Sum(od=>od.Price*od.Count).ToString("#,0") تومان</span>
+                                    </li>
+
+
+                                    <li class="discount-code">
+                                        <div class=" align-items-center">
+                                            <div class="col-md-7 pr mt-5">
+                                                <div class="coupon">
+                                                    <form action="#">
+                                                        <input type="text" name="input-coupon" class="input-coupon-code" placeholder="كد تخفیف:">
+                                                        <button class="btn btn-coupon" type="submit">اعمال</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 pl mt-5">
+                                                <div class="proceed-to-checkout">
+                                                    <a asp-action="Payment" asp-controller="Order" class="checkout-button d-block">
+                                                       تایید و پرداخت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

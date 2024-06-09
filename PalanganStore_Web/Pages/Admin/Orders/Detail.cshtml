@@ -1,0 +1,68 @@
+﻿@page "{id}"
+@using Palangan.Core.Services.Interfaces.Product;
+@model PalanganStore_Web.Pages.Admin.Orders.DetailModel
+@inject IProductService _productService;
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                           
+                                            <hr />
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>شماره ریز فاکتور</th>
+                                                            <th>محصول</th>
+                                                            <th>قیمت</th>
+                                                            <th>تعداد</th>                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var order in Model.detail)
+                                                        {
+                                                            <tr>
+                                                                <td>@order.OrderDetailId</td>
+                                                                <td>@_productService.GetProductNameById(@order.ProductId)</td>
+                                                                <td>@order.Price</td>
+                                                                <td>@order.Count</td>
+                                                                
+                                                               
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+
+</div>

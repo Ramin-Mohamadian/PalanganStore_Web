@@ -1,0 +1,191 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Products.AddProductModel
+@{
+
+}
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <form method="post" enctype="multipart/form-data">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div class="panel panel-primary">
+
+                                <div class="panel-heading">
+                                    اطلاعات محصول
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="px-3">
+                                        <div class="form-body">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">عنوان محصول : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" class="form-control" asp-for="product.Title">
+                                                        <div class="form-control-position">
+                                                            <i class="fa-ticket"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> گروه: </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <select class="form-control" asp-for="product.GroupId" asp-items="@(ViewData["Group"] as SelectList)">
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">زیر گروه: </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <select class="form-control" asp-for="product.SubGroup" asp-items="@(ViewData["SubGroup"] as SelectList)">
+                                                        </select>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+
+
+                                           
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> توضیح مختصر : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                         <textarea class="form-control" class="form-control" asp-for="product.Description"></textarea>
+                                                        <div class="form-control-position">
+                                                            <i class="ft-file-text"></i>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> قیمت : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="number" asp-for="product.Price" class="form-control">
+                                                        
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> تگ ها  : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" asp-for="product.Tags" class="form-control">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-tag"></i>
+                                                        </div>
+                                                    </div>                                                   
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    تصویر محصول
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img id="imgAvatar" class="card-img-top  img-fluid" src="/assets/images/Users/DefaultProfile.png">
+                                            <div class="card-block">
+                                                <h4 class="card-title">تصویر محصول</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>انتخاب تصویر</label>
+                                                <input type="file" name="imgUp" id="ImgUp">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success form-control" type="submit">ثبت</button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+
+    <script>
+        $("#product_GroupId").change(function () {
+            $("#product_SubGroup").empty();
+            $.getJSON("/Home/GetSubGroups/" + $("#product_GroupId :selected").val(),
+                function (data) {
+
+                    $.each(data,
+                        function () {
+                            $("#product_SubGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                });
+
+
+        });
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('product_Description');
+       
+    </script>
+ }
+}

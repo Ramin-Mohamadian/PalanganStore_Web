@@ -1,0 +1,79 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Products.IndexModel
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست محصولات ها</h4>
+                                            <hr />
+                                            <a asp-page="AddProduct" class="btn btn-success">
+                                                افزودن محصول جدید<i class="ft-plus-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>تصویر محصول</th>
+                                                            <th>عنوان محصول</th>
+                                                            <th>قیمت</th>
+
+                                                            <th>دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var product in Model.ListProduct)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <img style="max-width:70px; max-height:50px" src="/Admin/ProductImage/@product.ProductImage" />
+                                                                </td>
+                                                                <td>
+                                                                    @product.Title
+                                                                </td>
+                                                                <td>
+                                                                    @product.Price.ToString("#,0")
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-warning btn-sm" asp-page="EditProduct" asp-route-id="@product.ProductId">ویرایش</a>
+                                                                    <a class="btn btn-danger btn-sm" asp-page="DeleteProduct" asp-route-id="@product.ProductId">حذف</a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix text-muted text-center px-2"><span>© 2018 کپی رایت  <a href="https://fkazemi5236@gmail.com" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2"> fkazemi5236 </a> , همه حقوق محفوظ است </span></p>
+    </footer>
+
+</div>

@@ -1,0 +1,82 @@
+﻿@model List<Palangan.DataLayer.Entities.Comments.ProductComment>
+
+
+@foreach (var item in Model)
+{
+    @* <!-- row -->
+    <div class="comment-row">
+        <img style="max-height:50px;max-width:50px;" src="/assets/images/Users/@item.User.UserAvatar">
+        <div class="left-col">
+            <h3> @item.User.UserName </h3>
+            <span>@item.CreateDate</span>
+            <p>
+                @item.Comment
+            </p>
+        </div>
+    </div>*@
+    <!-- /row -->
+
+
+    <div class="post-item-profile order-1 d-block">
+        <div class="col-lg-3 col-md-3 col-xs-12 pr">
+            <div class="sidebar-profile sidebar-navigation">
+                <section class="profile-box">
+                    <header class="profile-box-header-inline">
+                        <div class="profile-avatar user-avatar profile-img">
+                            <img src="/assets/images/Users/@item.User.UserAvatar">
+                        </div>
+                    </header>
+                    <footer class="profile-box-content-footer">
+                        <span class="profile-box-nameuser">@item.User.UserName </span>
+                    </footer>
+                </section>
+
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-xs-12 pl">
+            <div class="profile-content">
+                <div class="profile-stats">
+                    <div class="profile-comment">
+                        <table class="table table-borderless table-profile-comment">
+                            <thead>
+                                <tr>
+
+
+                                    <th scope="col">نظر</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+
+                                    <td>
+                                        @item.Comment
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="profile-comment-thumb">
+                            <div class="profile-comment-img">
+                               
+                            </div>
+                           
+                            <div class="profile-comment-content">
+                                <h4>
+                                  
+                                   
+                                    <p>
+                                        @item.Comment
+                                    </p>
+                                </h4>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

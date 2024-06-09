@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Palangan.Core.Dtos.Order.ShowOrderViewModel>
+
+@{
+
+}
+
+<div class="divider-space-card d-block">
+    <div class="header-cart-basket">
+        <a href="#" class="cart-basket-box">
+            <span class="icon-cart">
+                <i class="mdi mdi-shopping"></i>
+            </span>
+            <span class="title-cart">سبد خرید</span>
+            <span class="price-cart">
+                @Model.Sum(od=>od.Price*od.Count)
+                <span>تومان</span>
+            </span>
+            <span class="count-cart">@Model.Select(od=>od.OrderDetailId).Count()</span>
+        </a>
+        <div class="widget-shopping-cart">
+            <div class="widget-shopping-cart-content">
+                <div class="wrapper">
+                    <div class="scrollbar" id="style-1">
+                        <div class="force-overflow">
+                            <ul class="product-list-widget">
+                                @if (Model.Any())
+                                {
+                                    @foreach (var cart in Model)
+                                    {
+                                        <li class="mini-cart-item">
+                                            <div class="mini-cart-item-content">
+                                                <a asp-action="DeleteOrder" asp-controller="Order" asp-route-id="@cart.OrderDetailId" class="mini-cart-item-close">
+                                                    <i class="mdi mdi-close"></i>
+                                                </a>
+                                                <a href="#" class="mini-cart-item-image d-block">
+                                                    <img src="/Admin/ProductImage/@cart.ImageName">
+                                                </a>
+                                                <span class="product-name-card">
+                                                    @cart.Title
+                                                </span>
+                                                <div class="variation">
+                                                    <span class="variation-n">
+                                                        تعداد :
+                                                    </span>
+                                                    <p class="mb-0">@cart.Count </p>
+                                                </div>
+                                               
+
+                                                <div class="quantity">
+                                                    <span class="quantity-Price-amount">
+                                                        @cart.Price.ToString("#,0")
+                                                        <span>تومان</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="mini-cart-item-content">
+                                        <a href="#" class="mini-cart-item-close">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+
+                                        <span class="product-name-card">
+                                            سبد خرید خالی است
+                                        </span>
+
+
+                                    </div>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mini-card-total">
+                    <strong>قیمت کل : </strong>
+                    <span class="price-total">
+                      @Model.Sum(od=>od.Price*od.Count)
+                        <span>تومان</span>
+                    </span>
+                </div>
+                <div class="mini-card-button">
+                    <a asp-action="ShowOrder" asp-controller="Order"  class="view-card">مشاهده سبد خرید</a>
+                    <a asp-action="Payment" asp-controller="Order" class="card-checkout">تسویه حساب</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

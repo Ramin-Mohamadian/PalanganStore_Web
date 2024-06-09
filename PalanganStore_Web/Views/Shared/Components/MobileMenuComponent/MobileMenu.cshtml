@@ -1,0 +1,53 @@
+﻿@model List<Palangan.DataLayer.Entities.Groups.ProductGroup>
+<!--    responsive-megamenu-mobile----------------->
+<nav class="sidebar">
+    <div class="nav-header">
+        <div class="header-cover"></div>
+        <div class="logo-wrap">
+            <a class="logo-icon" href="#">
+                <img alt="logo-icon" src="/assets/images/logo.png"
+                     width="40">
+            </a>
+        </div>
+    </div>
+    <ul class="nav-categories ul-base">
+        @foreach (var group in Model.Where(g => g.ParentId==null))
+        {
+            <li>
+                <a href="/home/arshive?group=@group.GroupId" class="collapsed" type="button" data-toggle="collapse"
+                   data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <i href="/home/arshive?group=@group.GroupId" class="mdi mdi-chevron-down"></i>@group.GroupTitle
+                </a>
+               @* <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                     data-parent="#accordionExample" style="">*@
+                    <ul>
+                        @if (Model.Any(g => g.ParentId==group.GroupId))
+                        {
+                            @foreach (var sub in Model.Where(g => g.ParentId==group.GroupId))
+                            {
+                                <li class="has-sub">
+                                <a href="/home/arshive?group=@sub.GroupId" class="category-level-2">@sub.GroupTitle</a>
+                                    <ul>
+                                    <li><a href="/home/arshive?group=@sub.GroupId" class="category-level-3">@sub.GroupTitle</a></li>
+                                       
+                                    </ul>
+                                </li>
+                            }
+                        }
+                           
+                        
+                    </ul>
+                 @*   </div>*@
+            </li>
+        }
+
+
+    </ul>
+</nav>
+<div class="nav-btn nav-slider btn-h4">
+    <span class="linee1"></span>
+    <span class="linee2"></span>
+    <span class="linee3"></span>
+</div>
+<div class="overlay"></div>
+<!--    responsive-megamenu-mobile----------------->

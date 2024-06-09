@@ -1,0 +1,37 @@
+﻿@model List<Palangan.DataLayer.Entities.Groups.ProductGroup>
+<nav class="header-main-nav">
+    <div class="d-block">
+        <div class="align-items-center">
+            <ul class="menu-ul mega-menu-level-one">
+
+                @foreach (var group in Model.Where(g => g.ParentId==null))
+                {
+                    <li id="nav-menu-item" class="menu-item nav-overlay">
+                        <a href="/home/arshive?group=@group.GroupId" class="current-link-menu">
+                            @group.GroupTitle
+                        </a>
+
+                        @if (Model.Any(g => g.ParentId==group.GroupId))
+                        {
+                            <ul class="sub-menu is-mega-menu mega-menu-level-two">
+                                @foreach (var sub in Model.Where(g => g.ParentId==group.GroupId))
+                                {
+                                    <li class="menu-mega-item menu-item-type-mega-menu">
+                                        <a href="/home/arshive?group=@sub.GroupId" class="mega-menu-link">
+                                            @sub.GroupTitle
+                                        </a>
+
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+
+
+              @*cart section*@
+                @await Component.InvokeAsync("ShowCartComponent")
+            </ul>
+        </div>
+    </div>
+</nav>

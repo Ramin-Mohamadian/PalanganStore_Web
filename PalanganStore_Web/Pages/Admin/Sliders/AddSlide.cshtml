@@ -1,0 +1,102 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Sliders.AddSlideModel
+@{
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <form method="post" enctype="multipart/form-data">
+                        <div class="row">
+                        
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3>افزودن اسلاید</h3>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <div class="px-3">
+                                                    <div class="form-body">
+
+                                                        <div class="form-group row">
+                                                            <label>عنوان اسلاید</label>
+                                                            <div class="col-md-9">
+                                                                <div class="position-relative has-icon-left">
+                                                                    <input type="text" asp-for="@Model.slide.Title" class="form-control">
+                                                                    <div class="form-control-position">
+                                                                        <i class="ft-plus-square"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <span asp-validation-for="@Model.slide.Title"></span>
+                                                                <br />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            تصویر محصول
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <img id="imgAvatar" class="card-img-top  img-fluid" src="/assets/images/Users/DefaultProfile.png">
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">تصویر محصول</h4>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>انتخاب تصویر</label>
+                                                        <input type="file" name="imgUp" id="ImgUp">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-success form-control" value="ثبت" />
+                        </div>
+                        </form>
+                    </section>
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}

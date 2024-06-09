@@ -1,0 +1,183 @@
+﻿@page
+@using Palangan.DataLayer.Entities.Roles;
+@model PalanganStore_Web.Pages.Admin.Users.CreateUserModel
+@{
+    List<Role> Roles = ViewData["Roles"] as List<Role>;
+}
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <form method="post" enctype="multipart/form-data">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div class="panel panel-primary">
+
+                                <div class="panel-heading">
+                                    اطلاعات کاربر
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="px-3">
+                                        <div class="form-body">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">نام کاربر : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.UserName">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-user"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span asp-validation-for="CreateUserVm.UserName"></span>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">ایمیل  : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.Email">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-mail"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="CreateUserVm.Email"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">کلمه عبور  : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="password" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.Password">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-lock"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="CreateUserVm.Password"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">تکرار کلمه عبور : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="password" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.RePassword">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-lock"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="CreateUserVm.RePassword"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1">شماره تلفن   : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.NumberPhone">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-phone"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="CreateUserVm.NumberPhone"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> آدرس    : </label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" id="timesheetinput1" class="form-control" asp-for="CreateUserVm.Address">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-map-pin"></i>
+                                                        </div>
+                                                    </div>
+                                                    <span asp-validation-for="CreateUserVm.Address"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="timesheetinput1"> نقش ها    : </label>
+                                                <ul>
+                                                    @foreach (var item in Roles)
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="selectedRole" value="@item.RoleId" /> @item.RoleTitle
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    تصویر کاربر
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img id="imgAvatar" class="card-img-top  img-fluid" src="/assets/images/Users/DefaultProfile.png">
+                                            <div class="card-block">
+                                                <h4 class="card-title">تصویر کاربر</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>انتخاب تصویر</label>
+                                                <input type="file" id="ImgUp" asp-for="CreateUserVm.UserAvatar">
+                                            </div>
+                                            <span asp-validation-for="CreateUserVm.UserAvatar"></span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success form-control" type="submit">ثبت</button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+ }
+}

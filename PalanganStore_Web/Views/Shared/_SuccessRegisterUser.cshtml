@@ -1,0 +1,18 @@
+﻿@model Palangan.DataLayer.Entities.Users.User
+@{
+    ViewData["Title"] = "ثبت نام";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="alert alert-info">
+            <h2>ثبت نام با موفقیت انجام شد</h2>
+            <p>
+                @Model.UserName عزیز ثبت نام شما با موفقیت انجام شد .ایمیلی برای '@Model.Email'ارسال شد لطفا وارد ایمیل شوید و حساب خود را فعال کنید.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿<div class="col-lg-3 col-md-3 col-xs-12 pl">
+    <div class="header-left">
+        <div class="header-account text-left">
+            <div class="d-block">
+                <div class="account-box">
+                    <div class="nav-account d-block pl">
+                        <span class="icon-account">
+                            <img src="/assets/images/man.png" class="avator">
+                        </span>
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            <span class="title-account"><a href="">@User.Identity.Name</a></span>
+                        }
+                        else
+                        {
+                            <span class="title-account"><a href="/Login">ورود</a></span>
+                            <span class="title-account"><a href="/Account/SignUp">ثبت نام</a></span>
+                        }
+                       
+                        <span class="title-account">حساب کاربری</span>
+                        <div class="dropdown-menu">
+                            <ul class="account-uls mb-0">
+                               @if(User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a>@User.Identity.Name</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="account-item">
+                                        <a href="/Account/SignUp">ثبت نام</a>
+                                    </li>
+                                    <li class="account-item">
+                                        <a href="/Login">ورود</a>
+                                    </li>
+                                }
+                                <li class="account-item">
+                                    <a href="/admin" class="account-link">پنل  ادمین</a>
+                                </li>
+                                <li class="account-item">
+                                    <a href="#" class="account-link">سفارشات من</a>
+                                </li>
+                                <li class="account-item">
+                                    <a href="#" class="account-link">تنظیمات</a>
+                                </li>
+                                <li class="account-item">
+                                    <a href="/Logout" class="account-link">خروج</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

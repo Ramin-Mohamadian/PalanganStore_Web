@@ -1,0 +1,36 @@
+﻿@page "{id}"
+@model PalanganStore_Web.Pages.Admin.Roles.DeleteRoleModel
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                                <div class="card">
+                                   <form method="post">
+                                       <input type="hidden" asp-for="Role.RoleId" />
+                                        <div class="alert alert-danger">
+                                            <p>
+                                                <h3>ایا از "@Model.Role.RoleTitle" مطمئن هستید؟</h3>
+                                            </p>                                            
+                                            <input type="submit" class="btn btn-success" value="حذف" />
+                                        </div>
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+                        <section />
+                    </section>
+            </div>
+        </div>
+    </div>
+</div>
+

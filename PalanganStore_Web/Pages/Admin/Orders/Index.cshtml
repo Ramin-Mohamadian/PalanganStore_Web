@@ -1,0 +1,100 @@
+﻿@page
+@using Palangan.Core.Services;
+@using Palangan.Core.Convertor;
+@using Palangan.Core.Services.Interfaces.Order;
+@model PalanganStore_Web.Pages.Admin.Orders.IndexModel
+@inject IOrderService _orderService;
+@{
+     
+}
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست سفارش  ها</h4>
+                                            <hr />
+                                          
+                                        </div>
+                                        <form method="get">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                </div>
+                                                <input type="text" name="orderid" class="form-control" placeholder="جستجو بر اساس شماره فاکتور" aria-label="Amount">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-info" type="submit">
+                                                        <i class="ft-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>شماره فاکتور</th>
+                                                            <th>کاربر</th>
+                                                            <th>آدرس</th>
+                                                            <th>تاریخ</th>
+                                                            <th>جمع</th>
+                                                            <th>ارسال شده؟</th>
+                                                            <th>دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var order in Model.Orders)
+                                                        {
+                                                            <tr>
+                                                                <td>@order.OrderId</td>
+                                                                <td>@_orderService.GetNameById(order.UserId)</td>
+                                                                <td>@_orderService.GetAdreesById(order.UserId)</td>
+                                                                <td>@order.CreateDate.ToShamsi()</td>
+                                                                <td>@order.Sum.ToString("#,0")</td>
+                                                                <td>
+                                                                    @if (order.IsDelivered==true)
+                                                                    {
+                                                                        <p class="text text-success">بله</p>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <p class="text text-danger">خیر</p>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-success btn-sm" asp-page="Detail" asp-route-id="@order.OrderId">جزئیات</a>
+                                                                    <a class="btn btn-warning btn-sm" asp-page="SubmitDelivered" asp-route-id="@order.OrderId">ثبت تحویل سفارش</a>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+   
+</div>

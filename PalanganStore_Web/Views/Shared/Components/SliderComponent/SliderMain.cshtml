@@ -1,0 +1,95 @@
+﻿@model List<Palangan.DataLayer.Entities.Sliders.Slider>
+
+
+
+@*<div class="container-main">
+    <div class="d-block">
+        <div class="col-lg-12 col-xs-12 pr mb-4">
+            <div class="slider-main-container d-block">
+
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                      @foreach (var item in Model)
+                    {
+                        <div class="carousel-inner">
+                            <div class="carousel-item carousel-item-h4 active">
+                                <img src="/Admin/Slider/item.SliderImage" alt="item.Title" class="d-block w-100 h-four-img">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h3> item.Title </h3>
+                                    <button type="submit" class="btn btn-warning btn-buy mt-4">خرید کنید</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                       data-slide="prev">
+                        <span class="fa fa-angle-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                       data-slide="next">
+                        <span class="fa fa-angle-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<div class="container-main">
+    <div class="d-block">
+        <div class="col-lg-12 col-xs-12 pr mb-4">
+            <div class="slider-main-container d-block">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="open"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+
+                        @foreach (var item in Model)
+                        {
+                                
+                                
+                                <div class="carousel-item carousel-item-h4 active">
+                                <img src="/Admin/Slider/@item.SliderImage" class="d-block w-100 h-four-img" alt="@item.Title">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3> item.Title </h3>
+                                        <button type="submit" class="btn btn-warning btn-buy mt-4">خرید کنید</button>
+                                    </div>
+                                </div>    
+                                
+
+                            
+                        }
+                        <div class="carousel-item carousel-item-h4">
+                            <img src="/Admin/Slider/item.SliderImage" class="d-block w-100 h-four-img" alt="item.Title">
+                            <div class="carousel-caption d-none d-md-block">
+
+                                <button type="submit" class="btn btn-warning btn-buy mt-4">خرید کنید</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="fa fa-angle-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="fa fa-angle-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

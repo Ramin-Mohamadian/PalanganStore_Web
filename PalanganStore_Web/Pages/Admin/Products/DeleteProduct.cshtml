@@ -1,0 +1,34 @@
+﻿@page "{id}"
+@model PalanganStore_Web.Pages.Admin.Products.DeleteProductModel
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="product.ProductId" />
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="panel panel-primary">
+
+                                <div class="panel-heading">
+                                    حذف محصول
+                                </div>
+                                <div class="alert alert-danger">
+                                    <h1>
+                                        آیا از حذف "@Model.product.Title" مطمئن هستید؟
+                                    </h1>
+                                </div>
+                                <input type="submit" value="حذف" class="btn btn-danger"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿@page
+@using Palangan.Core.Convertor;
+@using Palangan.Core.Services.Interfaces.Order;
+@using Palangan.Core.Services.Interfaces.Product;
+@inject IProductService _product;
+@inject IOrderService _order;
+@model PalanganStore_Web.Pages.Admin.CommentModel
+@{
+
+}
+
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست کامنت ها</h4>
+                                            <hr />
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>نظر</th>
+                                                            <th>کدام کاربر</th>
+                                                            <th>کدام محصول</th>
+                                                            <th>تاریخ</th>
+                                                            <th>حذف شده؟</th>
+                                                            <th>خوانده شده؟</th>
+                                                            <th>دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var comment in Model.comment)
+                                                        {
+                                                            <tr>
+                                                                <td>@comment.Comment</td>
+                                                                <td>@_order.GetNameById(@comment.UserId)</td>
+                                                                <td>@_product.GetProductNameById(@comment.ProductId)</td>
+                                                                <td>@comment.CreateDate.ToShamsi()</td>                                                               
+                                                                <td>
+                                                                    @if (comment.IsDelete==true)
+                                                                    {
+                                                                        <p class="text text-success">بله</p>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <p class="text text-danger">خیر</p>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (comment.IsAdminRead==true)
+                                                                    {
+                                                                        <p class="text text-success">بله</p>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <p class="text text-danger">خیر</p>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-danger btn-sm" asp-page="DeleteComment" asp-route-id="@comment.CommentId">حذف شود</a>
+                                                                    <a class="btn btn-warning btn-sm" asp-page="ReadComment" asp-route-id="@comment.CommentId">خوانده شد</a>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+
+</div>

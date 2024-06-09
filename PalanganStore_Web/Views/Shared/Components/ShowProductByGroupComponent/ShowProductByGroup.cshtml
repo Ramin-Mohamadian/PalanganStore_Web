@@ -1,0 +1,50 @@
+﻿@model List<Palangan.Core.Dtos.Product.ShowProductForSiteViewModel>
+
+@foreach (var product in Model)
+{
+    <div class="owl-item active" style="width: 309.083px; margin-left: 10px;">
+        <div class="item">
+            <a href="/Product/ShowProduct/@product.ProductId" class="d-block hover-img-link">
+                <img src="/Admin/ProductImage/@product.ProductImage" style="max-width:300px;max-height:285px;min-height:285px" class="img-fluid" alt="">
+                <span class="icon-view">
+                    <strong><i class="fa fa-eye"></i></strong>
+                </span>
+            </a>
+            <h2 class="post-title">
+                <a href="/Product/ShowProduct/@product.ProductId">
+                    @product.Title
+                </a>
+            </h2>
+            <div class="price">
+                @*  <del><span>۱۲,۰۰۰,۰۰۰<span>تومان</span></span></del>
+            <ins><span>۱۰,۵۰۰,۰۰۰<span>تومان</span></span></ins>*@
+                <ins><span>@product.Price.ToString("#,0")<span>تومان</span></span></ins>
+            </div>
+            <div class="actions">
+                <ul>
+                    <li class="action-item like">
+                        <button class="btn btn-light add-product-wishes" type="submit">
+                            <i class="fa fa-heart-o"></i>
+                        </button>
+                    </li>
+                   @* <li class="action-item compare">
+                        <button class="btn btn-light btn-compare" type="submit">
+                            <i class="fa fa-random"></i>
+                        </button>
+                    </li>*@
+                   @* <li class="action-item add-to-cart">
+                        <button class="btn btn-light btn-add-to-cart" type="submit">
+                            <i class="fa fa-shopping-cart"></i>
+                        </button>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+
+

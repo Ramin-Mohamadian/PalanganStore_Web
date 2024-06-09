@@ -1,0 +1,110 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Roles.AddRoleModel
+@using Palangan.DataLayer.Entities.Permissions
+@{
+    List<Permission> permissions = ViewData["permission"] as List<Permission>;
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>افزودن نقش</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <div class="card-body">
+                                                <div class="px-3">
+                                                    <div class="form-body">
+
+                                                        <div class="form-group row">
+                                                            <label>عنوان نقش</label>
+                                                            <div class="col-md-9">
+                                                                <div class="position-relative has-icon-left">
+                                                                    <input type="text" asp-for="role.RoleTitle" class="form-control">
+                                                                    <div class="form-control-position">
+                                                                        <i class="ft-plus-square"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <span asp-validation-for="role.RoleTitle"></span>
+                                                                <br />
+                                                              
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <ul>
+                                                                @foreach (var permission in permissions.Where(p => p.ParentID==null))
+                                                                {
+                                                                    <li>
+                                                                        <div>
+                                                                            <label>دسترسی ها</label>
+                                                                            <div class="position-relative has-icon-left">
+                                                                                <input type="checkbox" name="SelectedPermission" value="@permission.PermissionId">@permission.PermissionTitle
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    if (permissions.Any(p => p.ParentID==permission.PermissionId))
+                                                                    {
+                                                                        <ul>
+                                                                            @foreach (var sub in permissions.Where(p => p.ParentID==permission.PermissionId))
+                                                                            {
+                                                                                <li>
+                                                                                    <div>
+
+                                                                                        <div class="position-relative has-icon-left">
+                                                                                            <input type="checkbox" name="SelectedPermission" value="@sub.PermissionId">@sub.PermissionTitle
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </li>
+                                                                                <ul>
+                                                                                    @foreach (var subPermission in permissions.Where(p => p.ParentID==sub.PermissionId))
+                                                                                    {
+                                                                                        <li>
+                                                                                            <div>
+
+                                                                                                <div class="position-relative has-icon-left">
+                                                                                                    <input type="checkbox" name="SelectedPermission" value="@subPermission.PermissionId">@subPermission.PermissionTitle
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    }
+                                                                                </ul>
+                                                                            }
+                                                                        </ul>
+                                                                    }
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                        <input type="submit" class="btn btn-success form-control" value="ثبت" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<!-- slider-main--------------------------->
+@await Component.InvokeAsync("SliderComponent")
+
+
+<!-- adplacement--------------------------->
+<partial name="_AdOne" />
+<!-- adplacement--------------------------->
+<!-- slidre-product------------------------>
+<div class="container-main">
+    <div class="d-block">
+        <!-- slider-Suggests------------------------->
+        <div class="col-lg-12 col-md-12 col-xs-12 pr order-1 d-block">
+            <div class="slider-widget-products">
+                <div class="widget widget-product card">
+                    <header class="card-header">
+                        <span class="title-one">محصولات پر بازدید</span>
+                        <h3 class="card-title"></h3>
+                    </header>
+                    <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage"
+                                 style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
+                                @await Component.InvokeAsync("ShowProductByVisitedComponent")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End slider-Suggests------------------------->
+        <!--slider-amazing------------------------->
+        <section class="section-slider amazing-section pt-3">
+            <div class="container-amazing col-12">
+                <div class="col-lg-3 display-md-none pull-right">
+                    <div class="amazing-product text-center">
+                        <a href="#">
+                            <img src="/assets/images/slider-amazing/shopping-cart.svg" alt="">
+                        </a>
+                        <h3 class="amazing-heading-title amazing-size-default">محصولات شگفت انگیز</h3>
+                        <a href="#" class="view-all-amazing-btn">
+                            مشاهده همه
+                            <i class="uil uil-angle-left"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12 pull-left">
+                    <div class="slider-widget-products mb-0">
+                        <div class="widget widget-product card">
+                            <header class="card-header">
+                                <span class="title-one">محصولات شگفت انگیز</span>
+                                <h3 class="card-title">مشاهده همه</h3>
+                            </header>
+                            <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage"
+                                         style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
+                                       @*write component for amazing here*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--slider-amazing------------------------->
+        <!-- adplacement--------------------------->
+        <partial name="_AdSecound" />
+        <!-- adplacement--------------------------->
+        <div class="col-lg-12 col-md-12 col-xs-12 pr order-1 d-block">
+            <div class="slider-widget-products">
+                <div class="widget widget-product card">
+                    <header class="card-header">
+                        <span class="title-one">صنایع دستی</span>
+                        <h3 class="card-title"></h3>
+                    </header>
+                    <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage"
+                                 style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
+                               @* <partial name="_MySuggestsBox" />*@
+                                @await Component.InvokeAsync("ShowProductByGroupComponent")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+        </div>
+
+        @*Insert Ad Here*@
+        <partial name="_AdOne" />
+
+
+
+        <div class="col-lg-12 col-md-12 col-xs-12 pr order-1 d-block">
+            <div class="slider-widget-products">
+                <div class="widget widget-product card">
+                    <header class="card-header">
+                        <span class="title-one">محصولات اصلی</span>
+                        <h3 class="card-title"></h3>
+                    </header>
+                    <div class="product-carousel owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage"
+                                 style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2234px;">
+                                @await Component.InvokeAsync("ShowProductByDateComponent")
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>

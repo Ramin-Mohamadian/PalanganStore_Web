@@ -1,0 +1,64 @@
+﻿@page "{id?}"
+@model PalanganStore_Web.Pages.Admin.ProductGroup.CreateGroupModel
+@{
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>افزودن گروه</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <input type="hidden" asp-for="ProductGroups.ParentId" />
+                                            <div class="card-body">
+                                                <div class="px-3">
+                                                    <div class="form-body">
+
+                                                        <div class="form-group row">
+                                                            <label>عنوان گروه</label>
+                                                            <div class="col-md-12">
+                                                                <div class="position-relative has-icon-left">
+                                                                    <input type="text" asp-for="ProductGroups.GroupTitle" class="form-control">
+                                                                    <div class="form-control-position">
+                                                                        <i class="ft-plus-square"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <span asp-validation-for="ProductGroups.GroupTitle"></span>
+                                                                <br />
+
+                                                            </div>
+                                                        </div>
+
+                                                        
+                                                        <input type="submit" class="btn btn-success form-control" value="ثبت" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+</div>

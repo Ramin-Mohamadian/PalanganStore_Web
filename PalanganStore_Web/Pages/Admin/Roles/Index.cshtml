@@ -1,0 +1,71 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.Roles.IndexModel
+@{
+   
+}
+
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                           
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست نقش ها</h4>
+                                            <hr />
+                                            <a asp-page="AddRole" class="btn btn-success">
+                                                افزودن نقش جدید<i class="ft-plus-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table id="recent-orders" clfass="table table-hover table-xl mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="border-top-0">عنوان نقش</th>
+                                                            <th class="border-top-0">دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var role in Model.Roles)
+                                                        {
+                                                            <tr>
+                                                                <td class="text-success">@role.RoleTitle</td>
+                                                                <td>
+                                                                    <a asp-page="EditRole" asp-route-id="@role.RoleId" class="btn btn-warning">ویرایش<i class="icon-note"></i></a>
+                                                                    <a asp-page="DeleteRole" asp-route-id="@role.RoleId" class="btn btn-danger">حذف<i class="ft-trash-2"></i></a>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix text-muted text-center px-2"><span>© 2018 کپی رایت  <a href="https://fkazemi5236@gmail.com" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2"> fkazemi5236 </a> , همه حقوق محفوظ است </span></p>
+    </footer>
+
+</div>

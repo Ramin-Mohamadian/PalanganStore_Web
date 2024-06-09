@@ -1,0 +1,25 @@
+﻿@model Palangan.DataLayer.Entities.Users.User
+@{
+    ViewData["Title"] = "فعال شدن حساب کاربری";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+
+@if (ViewBag.Code)
+{
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-info">
+                <h2>ثبت نام با موفقیت انجام شد</h2>
+                <p>
+                    "@Model.UserName" عزیز حساب شما با موفقیت فعال شد 
+                </p>
+                <p>
+                    جهت ورود به سایت لاگین کنید
+                </p>
+                <a class="btn btn-primary" href="/Login">ورود به سایت</a>
+            </div>
+        </div>
+    </div>
+}

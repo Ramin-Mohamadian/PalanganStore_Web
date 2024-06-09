@@ -1,0 +1,92 @@
+﻿@page
+@model PalanganStore_Web.Pages.Admin.ProductGroup.IndexModel
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Basic form layout section start -->
+                <section id="basic-form-layouts">
+                    <section id="shopping-cart">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-warning">
+                                            <h4 class="card-title">لیست گروه ها</h4>
+                                            <hr />
+                                            <a asp-page="CreateGroup" class="btn btn-success">
+                                                افزودن گروه جدید<i class="ft-plus-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>عنوان گروه</th>
+                                                            <th>زیر گروه ها</th>
+                                                            <th>دستورات</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var group in Model.allproduct.Where(g => g.ParentId==null))
+                                                        {
+                                                            <tr>
+                                                                <td>@group.GroupTitle</td>
+                                                                <td>
+                                                                    @if (group.productGroups.Any())
+                                                                    {
+                                                                        <ul>
+                                                                            @foreach (var sub in group.productGroups)
+                                                                            {
+                                                                                <li>
+                                                                                    @sub.GroupTitle -  <a href="/Admin/ProductGroup/EditGroup/@sub.GroupId" class="btn btn-outline btn-sm btn-warning btn-xs">
+                                                                                        ویرایش
+                                                                                    </a>
+
+                                                                                    <a href="/Admin/ProductGroup/DeletGroup/@sub.GroupId" class="btn btn-outline btn-sm btn-danger btn-xs">
+                                                                                        حذف
+                                                                                    </a>
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    }                                                                   
+                                                                </td>
+                                                                <td>
+                                                                    <a href="/Admin/ProductGroup/CreateGroup/@group.GroupId" class="btn btn-info btn-sm">
+                                                                        زیر گروه
+                                                                    </a>
+                                                                    <a href="/Admin/ProductGroup/DeletGroup/@group.GroupId" class="btn btn-outline btn-sm btn-danger btn-xs">
+                                                                        حذف
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </section>
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix text-muted text-center px-2"><span>© 2018 کپی رایت  <a href="https://fkazemi5236@gmail.com" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2"> fkazemi5236 </a> , همه حقوق محفوظ است </span></p>
+    </footer>
+
+</div>

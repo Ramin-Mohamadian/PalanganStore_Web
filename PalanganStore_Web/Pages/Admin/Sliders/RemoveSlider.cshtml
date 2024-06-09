@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model PalanganStore_Web.Pages.Admin.Sliders.RemoveSliderModel
+@{
+
+}
+
+<div class="main-panel">
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="container-fluid">
+             
+                <form method="post">
+                    <input type="hidden" asp-for="@Model.slide.SliderImage" />
+                    <input type="hidden" asp-for="@Model.slide.SliderId" />
+                    <div class="alert alert-danger">
+                        <p>
+                            آیا از حذف "@Model.slide.Title" مطمئن هستید؟
+                        </p>
+                    </div>
+                    <a  href="/Admin/Sliders" class="btn btn-warning">خیر</a>
+                    <input type="submit" value="حذف" class="btn btn-success" />
+                </form>                
+                
+            </div>
+        </div>
+    </div>
+
+
+</div>
